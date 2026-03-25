@@ -207,11 +207,11 @@
       });
     }
   }
-})({"7vLP8":[function(require,module,exports,__globalThis) {
+})({"1WJ0e":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 64008;
+var HMR_SERVER_PORT = 52395;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -714,8 +714,85 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"2R06K":[function(require,module,exports,__globalThis) {
-console.log('helooo');
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _creatTasck = require("./js/creatTasck");
+var _creatTasckDefault = parcelHelpers.interopDefault(_creatTasck);
+var _btn = require("./js/btn");
+var _btnDefault = parcelHelpers.interopDefault(_btn);
+(0, _btnDefault.default)((0, _creatTasckDefault.default));
+function change() {
+    const checkRef = document.querySelector('.tasks__checkbox');
+    checkRef.addEventListener('change', (e)=>{
+        console.log(e.target.checked);
+    });
+}
 
-},{}]},["7vLP8","2R06K"], "2R06K", "parcelRequire3793", {})
+},{"./js/creatTasck":"ipbvF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./js/btn":"hArfb"}],"ipbvF":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>appendTask);
+function createTaskHTML(text) {
+    return `
+    <div class="tasks__item">
+      <div>
+        <input type="checkbox" class="tasks__checkbox">
+        <span class="tasks__text">${text}</span>
+      </div>
+      <div class="tasks__width">
+        <button class="tasks__edit-btn">rename</button>
+        <button class="tasks__delete-btn">delete</button>
+      </div>
+    </div>
+  `;
+}
+function appendTask(text) {
+    const listRef = document.querySelector('.tasks__list');
+    listRef.insertAdjacentHTML('beforeend', createTaskHTML(text));
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"hArfb":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>btnRef);
+function btnRef(creatElem) {
+    const btnRef = document.querySelector('.tasks__add-btn');
+    btnRef.addEventListener('click', ()=>{
+        const text = document.querySelector('.tasks__input').value;
+        if (text.trim() === '') alert('Name text');
+        else creatElem(text);
+    });
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["1WJ0e","2R06K"], "2R06K", "parcelRequire3793", {})
 
 //# sourceMappingURL=Todolist-parsel.0f77c784.js.map
